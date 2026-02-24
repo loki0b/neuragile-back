@@ -54,10 +54,6 @@ class UserController {
         }
    }
 
-   logout(req: any, res: any, next: any) {
-        res.clearCookie("auth_token", { path: "/" }).status(200).json({ status: "Logout successfuly" });
-   }
-
    user(req: any, res: any, next: any) {
         return res.status(200).json({ userId: req.userId });
    }
