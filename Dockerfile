@@ -8,10 +8,12 @@ RUN npm install
 
 COPY prisma ./prisma/
 
+RUN npx prisma migrate dev
+
 RUN npx prisma generate
 
 COPY . /app
 
 EXPOSE 8080
 
-CMD [ "npm", "start" ]
+CMD npx prisma migrate deploy && npm start
