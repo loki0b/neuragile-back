@@ -16,6 +16,4 @@ app.use("/api/user/", userRoutes);
 app.use("/api/cards", cardRoutes);
 app.use("api/collections", collectionRoutes);
 
-app.listen(port, () => {
-    console.log(`Service running: http://localhost:${port}/`)
-})
+export default app;
