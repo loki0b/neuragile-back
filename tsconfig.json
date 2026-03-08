@@ -3,6 +3,7 @@
     // File Layout
     "rootDir": "./src",
     "outDir": "./dist",
+    "baseUrl": ".",
 
     // Environment Settings
     "module": "node16",
