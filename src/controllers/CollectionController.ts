@@ -1,4 +1,4 @@
-import { prisma } from "@database/prisma";
+import { prisma } from "../lib/PrismaClient.js";
 
 class CollectionController {
     async getAllCollections(req: any, res: any) {
@@ -49,7 +49,7 @@ class CollectionController {
 
             if (collection == null) return res.status(403).json({ status: "Forbidden: Not your collection" });
     
-            const existingItem = prisma.collectionItem.findUnique({
+            const existingItem = await prisma.collectionItem.findUnique({
                 where: {
                     collectionId_cardId: {
                         collectionId,
@@ -83,7 +83,7 @@ class CollectionController {
                 select: { id: true }
             });
 
-            const collectionsIds = userCollections.map(c => c.id);
+            const collectionsIds = userCollections.map((c: { id: number }) => c.id);
             const items = await prisma.collectionItem.findMany({
                 where: {
                     collectionId: { in: collectionsIds }

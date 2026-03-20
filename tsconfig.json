@@ -3,12 +3,13 @@
     // File Layout
     "rootDir": "./src",
     "outDir": "./dist",
+    "baseUrl": ".",
 
     // Environment Settings
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "node16",
+    "moduleResolution": "node16",
     "allowImportingTsExtensions": false,
-    "target": "esnext",
+    "target": "es2020",
     "types": [],
 
     // Other Outputs
@@ -18,7 +19,6 @@
 
     // Style Options
     "noImplicitReturns": true,
-    "noImplicitOverride": true,
     
     // Recommended Options
     "strict": true,
@@ -28,14 +28,6 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
-
-    "paths": {
-      "@controllers/*": ["./src/controllers/*"],
-      "@routes/*": ["./src/routes/*"],
-      "@database/*": ["./src/database/*"],
-      "@authentication/*": ["./src/auth/*"],
-      "@middlewares/*": ["./src/middlewares/*"]
-    },
   },
   
   "include": ["src/**/*", "src/database/prisma.ts"]
