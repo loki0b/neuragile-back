@@ -15,7 +15,7 @@ class UserController {
                 where: { email: "email" }
             });
 
-            if (userExists === null) return res.status(409).json({status: "The user already exists"})
+            if (userExists !== null) return res.status(409).json({status: "The user already exists"})
 
             const hashedPassword: string = await hash(password, SALT_ROUNDS);
             await prisma.user.create({
