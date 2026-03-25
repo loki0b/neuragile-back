@@ -3,14 +3,21 @@ import { prisma } from "src/lib/PrismaClient.js";
 import { createToken } from "src/auth/session.js";
 
 import type { Request, Response, NextFunction } from "express";
+import { error } from "node:console";
 
 const SALT_ROUNDS: number = 10;
 
 class UserController {
    async register(req: Request, res: Response, next: NextFunction) {
         const { email, password } = req.body;
-        // verify if user exists
+
         try {
+            const userExists = await prisma.user.findFirst({
+                where: { email: "email" }
+            });
+
+            if (userExists === null) return res.status(409).json({status: "The user already exists"})
+
             const hashedPassword: string = await hash(password, SALT_ROUNDS);
             const user = await prisma.user.create({
                 data: { email, password: hashedPassword },
@@ -19,8 +26,7 @@ class UserController {
 
             return res.status(201).json({ status: "Account successfully created"});
         } catch (err) {
-            console.log(err);
-            return res.status(500);
+            return res.status(500).json({status: "Server error"});
         }
    }
 
