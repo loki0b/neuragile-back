@@ -3,7 +3,6 @@ import { prisma } from "src/lib/PrismaClient.js";
 import { createToken } from "src/auth/session.js";
 
 import type { Request, Response, NextFunction } from "express";
-import { error } from "node:console";
 
 const SALT_ROUNDS: number = 10;
 
