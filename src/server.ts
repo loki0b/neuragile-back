@@ -4,7 +4,7 @@ import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
 import cardRoutes from "./routes/cardRoutes.js";
 import collectionRoutes from "./routes/collectionRoutes.js";
-import chatRoutes from "src/routes/chatRoutes.js"
+import chatRoutes from "./routes/chatRoutes.js"
 
 import type { Express } from "express";
 
