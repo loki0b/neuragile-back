@@ -1,5 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
-import { systemInstruction } from "src/lib/systemInstruction.js";
+import { systemInstruction } from "../lib/systemInstruction.js";
 
 class ChatController {
     genAI = new GoogleGenAI({});
